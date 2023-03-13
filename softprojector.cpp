@@ -510,7 +510,11 @@ void SoftProjector::setSongList(Song song, int row)
     new_list = true;
     ui->listShow->clear();
     ui->labelIcon->setPixmap(QPixmap(":/icons/icons/song_tab.png").scaled(16,16,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
-    ui->labelShow->setText(song.title);
+    int width = ui->labelShow->width();
+    QFontMetrics metrix(ui->labelShow->font());
+    QString clippedText = metrix.elidedText(song.title, Qt::ElideRight, width-2);
+    ui->labelShow->setText(clippedText);
+//    ui->labelShow->setText(song.title);
     if(song.notes.isEmpty())
         ui->labelSongNotes->setVisible(false);
     else
@@ -601,7 +605,11 @@ void SoftProjector::setVideo(VideoInfo &video)
     ui->listShow->clear();
     ui->labelSongNotes->setVisible(false);
     ui->labelIcon->setPixmap(QPixmap(":/icons/icons/video.png").scaled(16,16,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
-    ui->labelShow->setText(currentVideo.fileName);
+    int width = ui->labelShow->width();
+    QFontMetrics metrix(ui->labelShow->font());
+    QString clippedText = metrix.elidedText(currentVideo.fileName, Qt::ElideRight, width-2);
+    ui->labelShow->setText(clippedText);
+    //ui->labelShow->setText(currentVideo.fileName);
     ui->labelShow->setWordWrap(true);
     new_list = false;
     updateScreen();
