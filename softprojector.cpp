@@ -602,6 +602,7 @@ void SoftProjector::setVideo(VideoInfo &video)
     ui->labelSongNotes->setVisible(false);
     ui->labelIcon->setPixmap(QPixmap(":/icons/icons/video.png").scaled(16,16,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
     ui->labelShow->setText(currentVideo.fileName);
+    ui->listShow->setWordWrap(true);
     new_list = false;
     updateScreen();
 }
