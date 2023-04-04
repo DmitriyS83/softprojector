@@ -58,11 +58,24 @@ void Bible::retrieveBooks()
 QStringList Bible::getBooks()
 {
     QStringList book_list;
+    QStringList book_id;
     if( books.count() == 0 )
         retrieveBooks();
-    for(int i(0); books.count()>i;++i)
+    for(int i(0); books.count()>i;++i) {
         book_list.append(books.at(i).book);
+        book_id.append(books.at(i).bookId);
+    }
+    return book_list;
+}
 
+Bible::BOOK_LIST_t Bible::getBooksList() {
+    BOOK_LIST_t book_list;
+    if( books.count() == 0 )
+        retrieveBooks();
+    for(int i(0); books.count()>i;++i) {
+        book_list.name.append(books.at(i).book);
+        book_list.id.append(books.at(i).bookId);
+    }
     return book_list;
 }
 

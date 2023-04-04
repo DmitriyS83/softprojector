@@ -87,11 +87,16 @@ public:
     QStringList previewIdList; // Verses that are in the preview (chapter) list
     QStringList currentIdList; // Verses that are in the show list
     QList<BibleBook> books;
+    typedef struct {
+        QStringList name;
+        QStringList id;
+    } BOOK_LIST_t;
 public slots:
     QList<BibleSearch> searchBible(bool begins, QRegExp searchExp);
     QList<BibleSearch> searchBible(bool allWords, QRegExp searchExp, int book);
     QList<BibleSearch> searchBible(bool allWords, QRegExp searchExp, int book, int chapter);
     QStringList getBooks();
+    BOOK_LIST_t getBooksList();
     QString getBookName(int id);
     void getVerseRef(QString vId, QString &book, int &chapter, int &verse);
     int getVerseNumberLast(QString vId);

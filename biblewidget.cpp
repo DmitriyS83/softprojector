@@ -87,10 +87,19 @@ void BibleWidget::loadBibles(QString initialId)
     // If it is different, then reload the bible list
     if(initialId!=mySettings.operatorBible)
     {
+        QColor OTcolor(0xf9ebea);
+        QColor NTcolor(0xd6eaf8);
         bible.setBiblesId(mySettings.operatorBible);
         bible.loadOperatorBible();
         ui->listBook->clear();
         ui->listBook->addItems(bible.getBooks());
+        for(int i=0; i< ui->listBook->count();i++) {
+            if(i<=39) {
+                ui->listBook->item(i)->setBackground(OTcolor);
+            } else {
+                ui->listBook->item(i)->setBackground(NTcolor);
+            }
+        }
         ui->listBook->setCurrentRow(0);
     }
 }
@@ -197,6 +206,7 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
 {
     // Called when the bible book filter field is modified.
     QStringList all_books = bible.getBooks();
+    Bible::BOOK_LIST_t all_bookList = bible.getBooksList();
 
     // Remove trailing spaces:
     text = text.trimmed();
@@ -207,6 +217,9 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
     // Check whether the user entered a search string that include book, chapter,
     // and verse. For example: "1King 3 13"
     QStringList search_words = text.split(" ");
+
+    QColor OTcolor(0xf9ebea);
+    QColor NTcolor(0xd6eaf8);
 
     // Allows the user to use more than one space as a seperator:
     search_words.removeAll("");
@@ -243,12 +256,22 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
             // This is an important optimization
             ui->listBook->clear();
             ui->listBook->addItems(all_books);
+
+            for(int i=0; i< ui->listBook->count();i++) {
+                if(i<=39) {
+                    ui->listBook->item(i)->setBackground(OTcolor);
+                } else {
+                    ui->listBook->item(i)->setBackground(NTcolor);
+                }
+            }
         }
     }
     else
     {
         // Show only the bible books that match the filter
         QStringList filtered_books;
+        Bible::BOOK_LIST_t filtered_books_list;
+
         if( text.at(0).isDigit() )
         {
             // First character of filter text is a number. Special search, where the
@@ -261,6 +284,8 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
             for(int i=0; i<all_books.count(); i++)
             {
                 QString book = all_books.at(i);
+                QString bookId = all_bookList.id.at(i);
+
                 QStringList book_words = book.split(" ");
 
                 if( ! book_words.at(0).startsWith(num_str) )
@@ -269,10 +294,22 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
                     continue;
 
                 filtered_books.append(book);
+                filtered_books_list.name.append(book);
+                filtered_books_list.id.append(bookId);
             }
         }
-        else
+        else {
             filtered_books = all_books.filter(text, Qt::CaseInsensitive);
+
+            for(int i=0; i < filtered_books.count(); i++ ) {
+                for(int x=0;x < all_books.count();x++) {
+                    if(filtered_books.at(i) == all_books.at(x)) {
+                        filtered_books_list.name.append(all_bookList.name.at(x));
+                        filtered_books_list.id.append(all_bookList.id.at(x));
+                    }
+                }
+            }
+        }
 
         if( ui->listBook->count() != filtered_books.count() )
         {
@@ -280,6 +317,14 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
             // FIXME don't just check the count; check values
             ui->listBook->clear();
             ui->listBook->addItems(filtered_books);
+
+            for(int i = 0; i<filtered_books_list.name.count();i++) {
+                if(filtered_books_list.id.at(i).toInt() < 39) {
+                    ui->listBook->item(i)->setBackground(OTcolor);
+                } else {
+                    ui->listBook->item(i)->setBackground(NTcolor);
+                }
+            }
         }
     }
 
@@ -576,12 +621,14 @@ bool BibleWidget::isVerseSelected()
 
 void BibleWidget::setBibleBookActive()
 {
+    /* F6 short cut */
     ui->lineEditBook->setFocus();
     ui->lineEditBook->selectAll();
 }
 
 void BibleWidget::setBibleSearchActive()
 {
+    /* F9 short cut */
     ui->search_ef->setFocus();
     ui->search_ef->selectAll();
 }
