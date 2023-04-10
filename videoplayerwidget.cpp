@@ -50,12 +50,12 @@ void VideoPlayerWidget::keyPressEvent(QKeyEvent *e)
         e->accept();
         return;
     }
-//    else if (key == Qt::Key_Escape)
-//    {
-//        setFullScreen(false);
-//        e->accept();
-//        return;
-//    }
+    else if (key == Qt::Key_Escape)
+    {
+        setFullScreen(false);
+        e->accept();
+        return;
+    }
     else
     {
         QVideoWidget::keyPressEvent(e);
