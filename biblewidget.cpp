@@ -94,7 +94,7 @@ void BibleWidget::loadBibles(QString initialId)
         ui->listBook->clear();
         ui->listBook->addItems(bible.getBooks());
         for(int i=0; i< ui->listBook->count();i++) {
-            if(i<=39) {
+            if(i<39) {
                 ui->listBook->item(i)->setBackground(OTcolor);
             } else {
                 ui->listBook->item(i)->setBackground(NTcolor);
@@ -258,7 +258,7 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
             ui->listBook->addItems(all_books);
 
             for(int i=0; i< ui->listBook->count();i++) {
-                if(i<=39) {
+                if(i<39) {
                     ui->listBook->item(i)->setBackground(OTcolor);
                 } else {
                     ui->listBook->item(i)->setBackground(NTcolor);
@@ -319,7 +319,7 @@ void BibleWidget::on_lineEditBook_textChanged(QString text)
             ui->listBook->addItems(filtered_books);
 
             for(int i = 0; i<filtered_books_list.name.count();i++) {
-                if(filtered_books_list.id.at(i).toInt() < 39) {
+                if(filtered_books_list.id.at(i).toInt() <= 39) {
                     ui->listBook->item(i)->setBackground(OTcolor);
                 } else {
                     ui->listBook->item(i)->setBackground(NTcolor);
