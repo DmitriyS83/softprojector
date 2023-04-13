@@ -466,8 +466,17 @@ void BibleWidget::on_search_results_list_currentRowChanged(int currentRow)
 
         if(ui->listBook->count() != all_books.count())
         {
+            QColor OTcolor(0xf9ebea);
+            QColor NTcolor(0xd6eaf8);
             ui->listBook->clear();
             ui->listBook->addItems(all_books);
+            for(int i=0; i< ui->listBook->count();i++) {
+                if(i<39) {
+                    ui->listBook->item(i)->setBackground(OTcolor);
+                } else {
+                    ui->listBook->item(i)->setBackground(NTcolor);
+                }
+            }
         }
 
         int row = all_books.indexOf(search_results.at(currentRow).book);
@@ -519,8 +528,19 @@ void BibleWidget::setSelectedHistory(BibleHistory &b)
     QStringList all_books = bible.getBooks();
     if(ui->listBook->count()!=all_books.count())
     {
+        QColor OTcolor(0xf9ebea);
+        QColor NTcolor(0xd6eaf8);
         ui->listBook->clear();
         ui->listBook->addItems(all_books);
+        for(int i=0; i< ui->listBook->count();i++) {
+            if(i<39) {
+                ui->listBook->item(i)->setBackground(OTcolor);
+            } else {
+                ui->listBook->item(i)->setBackground(NTcolor);
+            }
+        }
+
+
     }
     QString bk;
     int ch,vr,vrl;
