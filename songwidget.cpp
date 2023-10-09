@@ -173,7 +173,11 @@ void SongWidget::sendToPreview(Song song)
     ui->listPreview->clear();
     ui->listPreview->addItems(song_list);
     ui->listPreview->setCurrentRow(0);
-    ui->preview_label->setText(song.title);
+    int width = ui->preview_label->width();
+    QFontMetrics metrix(ui->preview_label->font());
+    QString clippedText = metrix.elidedText(song.title, Qt::ElideRight, width-2);
+    ui->preview_label->setText(clippedText);
+//    ui->preview_label->setText(song.title);
     if(song.notes.isEmpty())
         ui->label_notes->setVisible(false);
     else

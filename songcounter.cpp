@@ -150,57 +150,57 @@ void SongCounter::updateMonth(QString &date)
     {
         // If current translation is English, use standard English date format
         if(dl.at(0)=="01")
-            date = QString("%1 %2, %3").arg(tr("January")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("January"), dl.at(1), dl.at(2));
         else if(dl.at(0)=="02")
-            date = QString("%1 %2, %3").arg(tr("February")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("February"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="03")
-            date = QString("%1 %2, %3").arg(tr("March")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("March"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="04")
-            date = QString("%1 %2, %3").arg(tr("April")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("April"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="05")
-            date = QString("%1 %2, %3").arg(tr("May")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("May"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="06")
-            date = QString("%1 %2, %3").arg(tr("June")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("June"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="07")
-            date = QString("%1 %2, %3").arg(tr("July")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("July"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="08")
-            date = QString("%1 %2, %3").arg(tr("August")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("August"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="09")
-            date = QString("%1 %2, %3").arg(tr("September")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("September"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="10")
-            date = QString("%1 %2, %3").arg(tr("October")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("October"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="11")
-            date = QString("%1 %2, %3").arg(tr("November")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("November"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="12")
-            date = QString("%1 %2, %3").arg(tr("December")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%1 %2, %3").arg(tr("December"),dl.at(1), dl.at(2));
     }
     else
     {
         // If current translation is NOT English, then use standart Europe date format
         if(dl.at(0)=="01")
-            date = QString("%2 %1 %3").arg(tr("January")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("January"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="02")
-            date = QString("%2 %1 %3").arg(tr("February")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("February"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="03")
-            date = QString("%2 %1 %3").arg(tr("March")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("March"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="04")
-            date = QString("%2 %1 %3").arg(tr("April")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("April"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="05")
-            date = QString("%2 %1 %3").arg(tr("May")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("May"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="06")
-            date = QString("%2 %1 %3").arg(tr("June")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("June"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="07")
-            date = QString("%2 %1 %3").arg(tr("July")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("July"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="08")
-            date = QString("%2 %1 %3").arg(tr("August")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("August"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="09")
-            date = QString("%2 %1 %3").arg(tr("September")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("September"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="10")
-            date = QString("%2 %1 %3").arg(tr("October")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("October"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="11")
-            date = QString("%2 %1 %3").arg(tr("November")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("November"),dl.at(1), dl.at(2));
         else if(dl.at(0)=="12")
-            date = QString("%2 %1 %3").arg(tr("December")).arg(dl.at(1)).arg(dl.at(2));
+            date = QString("%2 %1 %3").arg(tr("December"),dl.at(1), dl.at(2));
     }
 
 }
